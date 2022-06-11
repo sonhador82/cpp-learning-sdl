@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Game.h"
 
+Game* Game::s_pInstance = 0;
+
 bool Game::init(const char *title, int xpos, int ypos, int width, int height, int flags)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
@@ -35,13 +37,27 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     }
     std::cout << "init success\n";
     m_bRunning = true; // everything inited successfully,    start the main loop return true;
+
+    m_go.load(100, 100, 128, 82, "animate");
+    m_player.load(300, 300, 128, 82, "animate");
 }
 
 void Game::render()
 {
     SDL_RenderClear(m_pRenderer);   // clear the renderer to    the draw color
+
+    m_go.draw(m_pRenderer);
+    m_player.draw(m_pRenderer);
+
     SDL_RenderPresent(m_pRenderer); // draw to the screen
 }
+
+void Game::update()
+{
+    m_go.update();
+    m_player.update();
+}
+
 
 void Game::clean()
 {
