@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "GameObject.h"
+#include "GameStateMachine.hpp"
 #include "Player.h"
 
 class Game
@@ -43,6 +44,8 @@ private:
     Player m_player;
 
     bool m_bRunning;
+
+    GameStateMachine* m_pGameStateMachine;
 };
 
 typedef Game TheGame;
