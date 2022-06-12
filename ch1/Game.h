@@ -2,12 +2,13 @@
 #define __Game__
 
 #include <SDL2/SDL.h>
-#include <GameObject.h>
-#include <Player.h>
+#include "GameObject.h"
+#include "Player.h"
 
 class Game
 {
 public:
+    Game();
     ~Game();
 
     bool init(const char *title, int xpos, int ypos, int width, int height, int flags);
@@ -45,9 +46,5 @@ private:
 };
 
 typedef Game TheGame;
-
-Game::Game(/* args */) {}
-
-Game::~Game() {}
 
 #endif

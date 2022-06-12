@@ -2,10 +2,10 @@
 #define __Player__
 
 #include <iostream>
-#include "GameObject.h"
+#include "SDLGameObject.h"
 #include "LoadParams.h"
 
-class Player : GameObject
+class Player : SDLGameObject
 {
 private:
     /* data */

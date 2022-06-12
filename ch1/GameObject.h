@@ -20,7 +20,7 @@ protected:
     int m_currentFrame;
     int m_currentRow;
 
-    GameObject(const LoaderParams* pParams){}
+    //GameObject(const LoaderParams* pParams){}
     virtual ~GameObject();
 
 };

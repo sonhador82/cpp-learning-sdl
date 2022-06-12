@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 #include "SDLGameObject.h"
 #include "Player.h"
-
+#include "InputHandler.h"
 
 Player::Player(const LoadParams* pParams) : SDLGameObject(pParams)
 {
@@ -21,7 +21,25 @@ void Player::draw(SDL_Renderer* pRenderer)
 
 void Player::update()
 {
-    m_x -= 1;
+    m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
+    m_acceleration.setX(1);
+    SDLGameObject::update();
+    if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
+    {
+        m_velocity.setX(2);
+    }
+    if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
+    {
+        m_velocity.setX(-2);
+    }
+    if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
+    {
+        m_velocity.setY(-2);
+    }
+    if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
+    {
+        m_velocity.setY(2);
+    }
 }
 
 void Player::clean()
